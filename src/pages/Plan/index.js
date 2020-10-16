@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 //redux actions
 import { applicationSetting } from "../../redux/actions";
-
+import List from "@material-ui/core/List";
 import { Tooltip, Container } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -82,5 +82,10 @@ export default (props) => {
     </ListItem>
   ));
 
-  return <Container>{listItems}</Container>;
+  return (
+    <Container>
+      <List className="planlist-root"></List>
+      {listItems}
+    </Container>
+  );
 };

@@ -46,7 +46,7 @@ const Login = (props) => {
   return (
     <Container>
       <div className="paper-container">
-        <img src="/images/logo.png" />
+        <img src="./images/logo.png" />
         <form className="login-form" onSubmit={handleSubmit}>
           <TextField
             margin="normal"
