@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  box-shadow: 0px !important;
+}
+.MuiPaper-elevation3 {
+  box-shadow: 0px !important;
+}
+
+.main {
+  margin-top: 4em;
+}

@@ -1,0 +1,17 @@
+.planlist-root {
+  width: 100%;
+  max-width: 360;
+  margin-top: 40px !important;
+}
+
+.planDetail-button {
+  margin: 8em;
+}
+.planList-Background {
+  background-color: #d3d3d366;
+  margin-bottom: 1em;
+}
+
+.planList-Organization {
+  margin-right: 1em !important;
+}

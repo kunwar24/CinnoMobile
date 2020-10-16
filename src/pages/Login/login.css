@@ -1,0 +1,25 @@
+.paper-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  flex-direction: column;
+}
+
+.login-form {
+  width: 100%;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.login-submit {
+  margin: 3px, 0px, 2px;
+  text-align: center;
+}
+
+.login-copyright {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
