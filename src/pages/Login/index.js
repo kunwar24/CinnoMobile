@@ -4,22 +4,29 @@ import {
   TextField,
   Button,
   Container,
-  Typography,
-  Grid,
-  Link
+  Link,
+  IconButton,
+  InputAdornment
 } from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import "./login.css";
 
 const Copyright = () => {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    // <Typography variant="body2" color="textSecondary" align="center">
+    <div>
+      <center>
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Continuity Innovations
       </Link>{" "}
       {new Date().getFullYear()}
-    </Typography>
+      </center>
+    </div>
+
+    // </Typography>
   );
 };
 
@@ -27,6 +34,10 @@ const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isResetPassword, setResetPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -69,11 +80,24 @@ const Login = (props) => {
             label="Password"
             fullWidth
             name="password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             autoComplete="current-password"
             value={password}
             onChange={(event) => {
               setPassword(event.target.value);
+            }}
+            InputProps={{ // <-- This is where the toggle button is added.
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )
             }}
           />
           <br />

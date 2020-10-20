@@ -54,6 +54,7 @@ export default (props) => {
           variant="contained"
           color="primary"
           aria-label="add"
+          size="small"
           onClick={() => onDownloadClick(item.teamName, item.id)}
           className="planList-Organization"
         >

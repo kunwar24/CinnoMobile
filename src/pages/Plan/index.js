@@ -45,11 +45,7 @@ export default (props) => {
 
   const listItems = jsonData.map((item, index) => (
     <ListItem key={index} className="planList-Background">
-      <ListItemAvatar>
-        <Avatar>
-          <ImageIcon />
-        </Avatar>
-      </ListItemAvatar>
+     
       <ListItemText
         primary={item.planName}
         secondary={`Last Modified: ${date}`}
@@ -60,6 +56,7 @@ export default (props) => {
           color="primary"
           aria-label="add"
           className="planList-Organization"
+          size="small"
           onClick={() => {
             onOrganizationClick(item.planName, item.id);
           }}
@@ -72,6 +69,7 @@ export default (props) => {
           variant="contained"
           color="primary"
           aria-label="add"
+          size="small"
           onClick={() => {
             onTeamsClick(item.planName, item.id);
           }}

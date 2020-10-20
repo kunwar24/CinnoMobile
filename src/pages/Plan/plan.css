@@ -1,7 +1,7 @@
 .planlist-root {
   width: 100%;
   max-width: 360;
-  margin-top: 40px !important;
+  padding-top: 0px !important;
 }
 
 .planDetail-button {
