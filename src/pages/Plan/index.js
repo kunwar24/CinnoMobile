@@ -15,6 +15,8 @@ import "./plan.css";
 import Button from "@material-ui/core/Button";
 import Group from "@material-ui/icons/Group";
 import DeviceHub from "@material-ui/icons/DeviceHub";
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import ViewListIcon from '@material-ui/icons/ViewList';
 
 export default (props) => {
   const dispatch = useDispatch();
@@ -33,6 +35,10 @@ export default (props) => {
     props.history.push({ pathname: `/plandetail/${id}/${planName}` });
   };
 
+  const onPlansClick = (planName, id) => {
+    props.history.push({ pathname: `/plans/${id}/${planName}` });
+  };
+
   var currentDate = new Date();
   var hours = currentDate.getHours();
   var minutes = currentDate.getMinutes();
@@ -45,12 +51,20 @@ export default (props) => {
 
   const listItems = jsonData.map((item, index) => (
     <ListItem key={index} className="planList-Background">
-     
+      <ListItemAvatar>
+        <Avatar className='avatarBack'>
+          {item.planName == 'Business Continuity Plan' ? <BusinessCenterIcon className='avatarIcon' /> : <ViewListIcon className='avatarIcon'/>}
+        </Avatar>
+      </ListItemAvatar>
+
       <ListItemText
         primary={item.planName}
-        secondary={`Last Modified: ${date}`}
+        // secondary={`Last Modified: ${date}`}
+        onClick={() => {
+          onPlansClick(item.planName, item.id);
+        }}
       />
-      <Tooltip title="Organization">
+      {/* <Tooltip title="Organization">
         <Button
           variant="contained"
           color="primary"
@@ -76,13 +90,13 @@ export default (props) => {
         >
           <Group />
         </Button>
-      </Tooltip>
+      </Tooltip> */}
     </ListItem>
   ));
 
   return (
     <Container>
-      <List className="planlist-root"></List>
+      <List className="planlist-root"><b>Welcome, Admin</b></List>
       {listItems}
     </Container>
   );

@@ -1,7 +1,8 @@
 .planlist-root {
   width: 100%;
   max-width: 360;
-  padding-top: 0px !important;
+  padding-top: 1em !important;
+  padding-bottom: 2em !important;
 }
 
 .planDetail-button {
@@ -10,8 +11,28 @@
 .planList-Background {
   background-color: #d3d3d366;
   margin-bottom: 1em;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  height: 5em !important;
 }
 
 .planList-Organization {
   margin-right: 1em !important;
+}
+
+.subPlanlist-root{
+  width: 100%;
+  max-width: 360;
+  text-align: center !important;
+}
+
+.avatarBack{
+  border-radius: 5px !important;
+  transform: rotate(45deg);
+  background-color: #08e1ae !important;
+  background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%) !important;
+}
+
+.avatarIcon{
+  transform: rotate(-45deg) !important;
 }

@@ -6,6 +6,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "../components/Header";
 import Login from "../pages/Login";
 import PlanList from "../pages/Plan";
+import Plans from "../pages/Plan/Plans";
 import PlanDetail from "../pages/Plan/PlanDetail";
 import PdfViewer from "../pages/Plan/PdfViewer";
 import ForgotPassword from "../pages/ForgotPassword";
@@ -29,6 +30,7 @@ export default memo((props) => {
       <Route exact path="/login" component={Login} />
       <Route exact path="/forgotpassword" component={ForgotPassword} />
       <ApplicationRouteHandler exact path="/planlist" component={PlanList} />
+      <ApplicationRouteHandler exact path="/plans/:id/:planName" component={Plans} />
       <ApplicationRouteHandler
         exact
         path="/plandetail/:id/:planName"

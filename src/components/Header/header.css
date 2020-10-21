@@ -1,4 +1,16 @@
 .title-flex {
   flex: 1;
   text-align: center;
+  margin-right: 2em !important;
+}
+
+.drawerPaper {
+  position: relative !important;
+  width: 50% !important;
+}
+
+.toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
 }
