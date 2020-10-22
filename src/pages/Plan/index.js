@@ -18,11 +18,11 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import AppsIcon from '@material-ui/icons/Apps';
 import BallotIcon from '@material-ui/icons/Ballot';
-import DehazeIcon from '@material-ui/icons/Dehaze';
-import ListIcon from '@material-ui/icons/List';
-import CloudQueueIcon from '@material-ui/icons/CloudQueue';
-import TocIcon from '@material-ui/icons/Toc';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
+import CloudIcon from '@material-ui/icons/Cloud';
+import NotesIcon from '@material-ui/icons/Notes';
+import TuneIcon from '@material-ui/icons/Tune';
 
 export default (props) => {
   const dispatch = useDispatch();
@@ -56,8 +56,8 @@ export default (props) => {
   var date = `${currentDate.toDateString()} ${strTime}`;
   let key = -1;
 
-  const avatarList = [<BusinessCenterIcon className='avatarIcon' />, <ViewListIcon className='avatarIcon' />, <CloudQueueIcon className='avatarIcon' />, <DehazeIcon className='avatarIcon' />, <BallotIcon className='avatarIcon' />,
-  <ListIcon className='avatarIcon' />, <AppsIcon className='avatarIcon' />, <TocIcon className='avatarIcon' />, <AssessmentIcon className='avatarIcon' />];
+  const avatarList = [<BusinessCenterIcon className='avatarIcon' />, <ViewListIcon className='avatarIcon' />, <CloudIcon className='avatarIcon' />, <AllInboxIcon className='avatarIcon' />, <BallotIcon className='avatarIcon' />,
+  <TuneIcon className='avatarIcon' />, <AppsIcon className='avatarIcon' />, <NotesIcon className='avatarIcon' />, <AssessmentIcon className='avatarIcon' />];
 
   const listItems = jsonData.map((item, index) => {
     key = key >= 2 ? 0 : (key + 1);

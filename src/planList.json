@@ -1,32 +1,32 @@
 [
   {
     "id": 1,
-    "planName": "Business Continuity Plan",
+    "planName": "Business Continuity Plans",
     "planDate": "14-Oct-2020"
   },
   {
     "id": 2,
-    "planName": "Disaster Recovery Plan",
+    "planName": "Disaster Recovery Plans",
     "planDate": "14-Oct-2020"
   },
   {
     "id": 3,
-    "planName": "Plan without Template",
+    "planName": "Plans without Template",
     "planDate": "14-Oct-2020"
   },
   {
     "id": 4,
-    "planName": "Business Plan",
+    "planName": "Business Plans",
     "planDate": "14-Oct-2020"
   },
   {
     "id": 5,
-    "planName": "Recovery Plan",
+    "planName": "Recovery Plans",
     "planDate": "14-Oct-2020"
   },
   {
     "id": 6,
-    "planName": "Plan Template",
+    "planName": "Plans Template",
     "planDate": "14-Oct-2020"
   },
   {
