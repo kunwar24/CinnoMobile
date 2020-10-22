@@ -16,6 +16,13 @@ import Group from "@material-ui/icons/Group";
 import DeviceHub from "@material-ui/icons/DeviceHub";
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ViewListIcon from '@material-ui/icons/ViewList';
+import AppsIcon from '@material-ui/icons/Apps';
+import BallotIcon from '@material-ui/icons/Ballot';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import ListIcon from '@material-ui/icons/List';
+import CloudQueueIcon from '@material-ui/icons/CloudQueue';
+import TocIcon from '@material-ui/icons/Toc';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 
 export default (props) => {
   const dispatch = useDispatch();
@@ -49,12 +56,16 @@ export default (props) => {
   var date = `${currentDate.toDateString()} ${strTime}`;
   let key = -1;
 
+  const avatarList = [<BusinessCenterIcon className='avatarIcon' />, <ViewListIcon className='avatarIcon' />, <CloudQueueIcon className='avatarIcon' />, <DehazeIcon className='avatarIcon' />, <BallotIcon className='avatarIcon' />,
+  <ListIcon className='avatarIcon' />, <AppsIcon className='avatarIcon' />, <TocIcon className='avatarIcon' />, <AssessmentIcon className='avatarIcon' />];
+
   const listItems = jsonData.map((item, index) => {
     key = key >= 2 ? 0 : (key + 1);
     return <ListItem key={index} className="planList-Background">
       <ListItemAvatar>
         <Avatar className={clsx('avatarBack', { ['avatarBackColor1']: (key == 0) }, { ['avatarBackColor2']: (key == 1) }, { ['avatarBackColor3']: (key == 2) })}>
-          {item.planName == 'Business Continuity Plan' ? <BusinessCenterIcon className='avatarIcon' /> : <ViewListIcon className='avatarIcon' />}
+          {avatarList[index]}
+          {/* {item.planName == 'Business Continuity Plan' ? <BusinessCenterIcon className='avatarIcon' /> : <ViewListIcon className='avatarIcon' />} */}
         </Avatar>
       </ListItemAvatar>
 
