@@ -29,8 +29,21 @@
 .avatarBack{
   border-radius: 5px !important;
   transform: rotate(45deg);
+}
+
+.avatarBackColor1{
   background-color: #08e1ae !important;
   background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%) !important;
+}
+.avatarBackColor2{
+  /* background-color: #3ee577;
+  background-image: linear-gradient(315deg, #3ee577 0%, #42fcdb 74%); */
+  background-color: #3bb78f;
+background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+}
+.avatarBackColor3{
+  background-color: #4d5dfb;
+  background-image: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
 }
 
 .avatarIcon{

@@ -40,14 +40,14 @@ export default (props) => {
 
   const teamList = teamsData.map((item, index) => (
     <ListItem key={index} className="planList-Background">
-      <ListItemAvatar>
+      {/* <ListItemAvatar>
         <Avatar>
           <ImageIcon />
         </Avatar>
-      </ListItemAvatar>
+      </ListItemAvatar> */}
       <ListItemText
         primary={item.teamName}
-        secondary={`Last Modified: ${date}`}
+        // secondary={`Last Modified: ${date}`}
       />
       <Tooltip title="Organization">
         <Button
@@ -66,7 +66,7 @@ export default (props) => {
 
   return (
     <Container>
-      <List className="planlist-root"></List>
+      <List className="subPlanlist-root"></List>
       {teamList}
     </Container>
   );

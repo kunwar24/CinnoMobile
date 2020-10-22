@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import clsx from 'clsx';
 import { useDispatch } from "react-redux";
 
 //redux actions
@@ -10,7 +10,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-import ImageIcon from "@material-ui/icons/Image";
 import "./plan.css";
 import Button from "@material-ui/core/Button";
 import Group from "@material-ui/icons/Group";
@@ -48,12 +47,14 @@ export default (props) => {
   minutes = minutes < 10 ? "0" + minutes : minutes;
   var strTime = hours + ":" + minutes + " " + ampm;
   var date = `${currentDate.toDateString()} ${strTime}`;
+  let key = -1;
 
-  const listItems = jsonData.map((item, index) => (
-    <ListItem key={index} className="planList-Background">
+  const listItems = jsonData.map((item, index) => {
+    key = key >= 2 ? 0 : (key + 1);
+    return <ListItem key={index} className="planList-Background">
       <ListItemAvatar>
-        <Avatar className='avatarBack'>
-          {item.planName == 'Business Continuity Plan' ? <BusinessCenterIcon className='avatarIcon' /> : <ViewListIcon className='avatarIcon'/>}
+        <Avatar className={clsx('avatarBack', { ['avatarBackColor1']: (key == 0) }, { ['avatarBackColor2']: (key == 1) }, { ['avatarBackColor3']: (key == 2) })}>
+          {item.planName == 'Business Continuity Plan' ? <BusinessCenterIcon className='avatarIcon' /> : <ViewListIcon className='avatarIcon' />}
         </Avatar>
       </ListItemAvatar>
 
@@ -92,7 +93,7 @@ export default (props) => {
         </Button>
       </Tooltip> */}
     </ListItem>
-  ));
+  });
 
   return (
     <Container>
