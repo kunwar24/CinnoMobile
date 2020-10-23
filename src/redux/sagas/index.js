@@ -42,8 +42,8 @@ export function* request(action) {
   } catch (error) {
     //reading the HTTP error code
     let errorStatus = error.response
-        ? error.response.status
-        : ResponseCode.RequestTimeout,
+      ? error.response.status
+      : ResponseCode.RequestTimeout,
       message = "",
       shouldRedirectToLogin = errorStatus === ResponseCode.SessionExpire;
     switch (errorStatus) {

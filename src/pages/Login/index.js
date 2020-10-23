@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import React, { useState, useCallback, useEffect } from "react";
+import { connect, shallowEqual, useSelector, useDispatch } from 'react-redux';
 import {
   TextField,
   Button,
@@ -10,27 +10,27 @@ import {
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
+import packageJson from '../../../package.json';
 import "./login.css";
+//Redux Actions
+import { login } from '../../redux/actions';
 
 const Copyright = () => {
   return (
-    // <Typography variant="body2" color="textSecondary" align="center">
     <div>
       <center>
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Continuity Innovations
-      </Link>{" "}
-      {new Date().getFullYear()}
+        {"Copyright © "}
+        <Link color="inherit" href="https://material-ui.com/">
+          Continuity Innovations
+      </Link>{` ${new Date().getFullYear()}`}
       </center>
     </div>
-
-    // </Typography>
   );
 };
 
 const Login = (props) => {
+  const { loginInfo } = props;
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isResetPassword, setResetPassword] = useState("");
@@ -54,10 +54,22 @@ const Login = (props) => {
   const handleForgotPassword = (event) => {
     setResetPassword(true);
   };
+  var currentDate = new Date();
+  let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  let day = currentDate.getDate();
+  let monthIndex = currentDate.getMonth();
+  let monthName = monthNames[monthIndex];
+  let year = currentDate.getFullYear();
+  let builtDate = `${day} ${monthName} ${year}`;
   return (
     <Container>
       <div className="paper-container">
         <img src="./images/logo.png" />
+        <center>
+          <div className='versionName'>
+            {`Version ${packageJson.version} Built on: ${builtDate}`}
+          </div>
+        </center>
         <form className="login-form" onSubmit={handleSubmit}>
           <TextField
             margin="normal"
@@ -134,7 +146,7 @@ const Login = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  loginData: state.loginData
+  loginInfo: state.loginData
 });
 
 const LoginModule = connect(mapStateToProps)(Login);

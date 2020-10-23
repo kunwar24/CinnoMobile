@@ -18,7 +18,8 @@ if (isLocal) {
     if (dir && dir.length > 0) {
       url += dir;
     } else {
-      url += "/Cinno/";
+      // url += "/Cinno/";
+      url = "http://localhost:8000";
     }
   }
 } else {

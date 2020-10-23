@@ -20,9 +20,16 @@
 
 .login-copyright {
   position: fixed;
-  bottom: 0;
+  bottom: 10px;
   width: 100%;
   color: rgba(0, 0, 0, 0.54);
   margin: 0;
   left: 0;
+}
+
+.versionName{
+  color: rgba(0, 0, 0, 0.54);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 0.8rem;
+  margin-top: 1em;
 }

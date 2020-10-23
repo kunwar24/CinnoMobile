@@ -70,8 +70,9 @@ export default (props) => {
       </ListItemAvatar>
 
       <ListItemText
+        className='listSecondaryText'
         primary={item.planName}
-        // secondary={`Last Modified: ${date}`}
+        secondary={`Last Modified: ${date}`}
         onClick={() => {
           onPlansClick(item.planName, item.id);
         }}

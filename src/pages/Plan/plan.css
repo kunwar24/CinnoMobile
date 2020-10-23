@@ -48,3 +48,7 @@
 .avatarIcon{
   transform: rotate(-45deg) !important;
 }
+
+.listSecondaryText > p{
+  font-size: 0.75em !important;
+}
