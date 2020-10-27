@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import clsx from 'clsx';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //redux actions
-import { applicationSetting } from "../../redux/actions";
+import { applicationSetting, planList } from "../../redux/actions";
 import List from "@material-ui/core/List";
 import { Tooltip, Container } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
@@ -26,10 +26,24 @@ import TuneIcon from '@material-ui/icons/Tune';
 
 export default (props) => {
   const dispatch = useDispatch();
-  const jsonData = require("../../planList.json");
 
   useEffect(() => {
     dispatch(applicationSetting({ title: "Plans" }));
+  }, []);
+
+  useEffect(() => {
+    let userData = sessionStorage.getItem('currentUser');
+    if (userData) {
+      let userToken = JSON.parse(userData).token;
+      dispatch(planList({}, { token: userToken, apiMethod: 'GET' }));
+    } else {
+      props.history.push({ pathname: "/" });
+    }
+  }, []);
+
+  let planListData = useSelector((state) => {
+    let { payload } = state.planListData.data;
+    return !!payload && payload.item.records || [];
   }, []);
 
   const onOrganizationClick = (planName, id) => {
@@ -45,36 +59,35 @@ export default (props) => {
     props.history.push({ pathname: `/plans/${id}/${planName}` });
   };
 
-  var currentDate = new Date();
-  var hours = currentDate.getHours();
-  var minutes = currentDate.getMinutes();
-  var ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  var strTime = hours + ":" + minutes + " " + ampm;
-  var date = `${currentDate.toDateString()} ${strTime}`;
-  let key = -1;
-
   const avatarList = [<BusinessCenterIcon className='avatarIcon' />, <ViewListIcon className='avatarIcon' />, <CloudIcon className='avatarIcon' />, <AllInboxIcon className='avatarIcon' />, <BallotIcon className='avatarIcon' />,
   <TuneIcon className='avatarIcon' />, <AppsIcon className='avatarIcon' />, <NotesIcon className='avatarIcon' />, <AssessmentIcon className='avatarIcon' />];
 
-  const listItems = jsonData.map((item, index) => {
+  let key = -1;
+  const listItems = planListData.length !== 0 && planListData.map((item, index) => {
+    let currentDate = new Date(item.updatedAt * 1000);
+    let hours = currentDate.getHours();
+    let minutes = currentDate.getMinutes();
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    let strTime = hours + ":" + minutes + " " + ampm;
+    let date = `${currentDate.toDateString()} ${strTime}`;
+    let currentItem = item.name;
     key = key >= 2 ? 0 : (key + 1);
     return <ListItem key={index} className="planList-Background">
       <ListItemAvatar>
         <Avatar className={clsx('avatarBack', { ['avatarBackColor1']: (key == 0) }, { ['avatarBackColor2']: (key == 1) }, { ['avatarBackColor3']: (key == 2) })}>
           {avatarList[index]}
-          {/* {item.planName == 'Business Continuity Plan' ? <BusinessCenterIcon className='avatarIcon' /> : <ViewListIcon className='avatarIcon' />} */}
         </Avatar>
       </ListItemAvatar>
 
       <ListItemText
         className='listSecondaryText'
-        primary={item.planName}
+        primary={currentItem}
         secondary={`Last Modified: ${date}`}
         onClick={() => {
-          onPlansClick(item.planName, item.id);
+          onPlansClick(currentItem, item.id);
         }}
       />
       {/* <Tooltip title="Organization">

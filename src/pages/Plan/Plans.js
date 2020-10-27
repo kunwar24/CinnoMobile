@@ -42,7 +42,7 @@ export default (props) => {
     var strTime = hours + ":" + minutes + " " + ampm;
     var date = `${currentDate.toDateString()} ${strTime}`;
 
-    const showBtnPlans = ['Business Continuity Plans', 'Business Plans'];
+    const showBtnPlans = ['Business Continuity Plan', 'Business Plan'];
 
     const listItems = jsonData.map((item, index) => (
         <ListItem key={index} className="planList-Background">

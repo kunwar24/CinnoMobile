@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Tooltip, Drawer, Divider } from "@material-ui/core";
 import List from "@material-ui/core/List";
@@ -13,13 +13,17 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ReplyIcon from '@material-ui/icons/Reply';
 import "./header.css";
-
+import { login, logout } from '../../redux/actions';
 const hideBackList = ["planlist"];
 
 export default (props) => {
   let title = useSelector((state) => state.settingData.title);
   const hideBack = hideBackList.includes(props.location.pathname.substring(1));
+  const dispatch = useDispatch();
   const onLogout = () => {
+    sessionStorage.clear();
+    dispatch(login(null, { type: 'LOGIN_RESET' }));
+    dispatch(logout(null, { type: 'LOGOUT_RESET' }));
     props.history.push({ pathname: "/" });
   };
   const onBack = () => {
@@ -29,12 +33,6 @@ export default (props) => {
 
   const toggleDrawer = () => {
     setDrawer(!drawer);
-  };
-
-  const onItemClick = () => {
-    debugger
-    // setDrawer(variant === "temporary" ? false : drawer);
-    // setDrawer(!drawer);
   };
 
   return (

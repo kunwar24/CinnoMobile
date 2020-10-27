@@ -29,7 +29,7 @@ export function planList(data = {}, options = {}) {
   return {
     type: options.type || PLANLIST,
     apiMethod: options.apiMethod || "POST",
-    apiUrl: api.PlanList,
+    apiUrl: `${api.PlanList}&token=${options.token}`,
     data
   };
 }

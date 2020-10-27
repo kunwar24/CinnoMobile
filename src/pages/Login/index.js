@@ -39,16 +39,23 @@ const Login = (props) => {
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (
-      username.trim() === "admin@spraxa.com" &&
-      password.trim() === "Admin@123"
-    ) {
-      props.history.push({ pathname: "/planlist" });
+  useEffect(() => {
+    const { error, payload } = loginInfo.data || {};
+    if (error !== undefined && payload !== undefined && !error && !payload.item.expired) {
+        sessionStorage.setItem('currentUser', JSON.stringify(payload.item));
+        props.history.push({ pathname: "/planlist" });
     } else {
-      alert("Invalid Credentials");
+      props.history.push({ pathname: "/" });
     }
+  }, [loginInfo.data]);
+
+  const handleSubmit = values => {
+    values.preventDefault();
+    let params = {
+      username: username.trim(),
+      password: password.trim()
+    }
+    dispatch(login(params));
   };
 
   const handleForgotPassword = (event) => {
