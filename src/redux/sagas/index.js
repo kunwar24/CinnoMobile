@@ -23,7 +23,6 @@ const fetchRequest = ({ apiUrl, data, apiMethod }) =>
       method: apiMethod,
       baseURL: consts.hostURL,
       url: apiUrl,
-      withCredentials: true,
       data: data,
       timeout: consts.defaultValue.requestTimeout
     })
